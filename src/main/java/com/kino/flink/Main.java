@@ -15,14 +15,5 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 public class Main {
     public static void main(String[] args) {
         // TODO: 解析 sql, 根据不同的数据库创建对应的cdc对象
-        BaseCDC cdc = new MySQLCDC();
-        Source build = cdc.createBuild();
-        LocalStreamEnvironment localEnvironment = StreamExecutionEnvironment.createLocalEnvironment();
-        SingleOutputStreamOperator operator =
-                localEnvironment.fromSource(
-                        build,
-                        WatermarkStrategy.noWatermarks(),
-                        ""
-                        ).startNewChain();
     }
 }
